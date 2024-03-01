@@ -1,0 +1,177 @@
+@import './mixins.scss';
+@import './variables.scss';
+
+@function calculateRem($pxsize) {
+  @return calc(($pxsize/16)) + rem;
+}
+
+.content {
+  max-width: calculateRem(1546);
+  // height: calculateRem(1427);
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+  margin-top: calculateRem(133);
+  @include flex_column;
+  @media only screen and (min-width: 1366px) and (max-width: 1919px) {
+    max-width: calculateRem(1160);
+    height: 70%;
+    margin-top: calculateRem(100);
+  }
+  .prizes_title {
+    font-size: calculateRem(69.33);
+    text-transform: uppercase;
+    @media only screen and (min-width: 1366px) and (max-width: 1919px) {
+      font-size: calculateRem(52);
+    }
+  }
+  .guaranted_title {
+    font-size: calculateRem(42.67);
+    margin-bottom: calculateRem(40);
+    margin-top: calculateRem(53.33);
+
+    @media only screen and (min-width: 1366px) and (max-width: 1919px) {
+      font-size: calculateRem(32);
+      margin-bottom: calculateRem(30);
+      margin-top: calculateRem(40);
+    }
+  }
+  .receipt_registration {
+    max-width: calculateRem(1546);
+    min-width: calculateRem(1160);
+    width: 100%;
+    height: calculateRem(400);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: calculateRem(178.41);
+    background-color: #f6f6f6;
+    border-radius: calculateRem(48);
+    padding-bottom: calculateRem(56);
+    padding-top: calculateRem(56);
+    @media only screen and (min-width: 1366px) and (max-width: 1919px) {
+      height: calculateRem(300);
+    }
+
+    .chips {
+      width: calculateRem(393.59);
+      height: calculateRem(285.01);
+      @media only screen and (min-width: 1366px) and (max-width: 1919px) {
+        width: calculateRem(295.19);
+        height: calculateRem(213.76);
+      }
+    }
+    .text {
+      width: calculateRem(377);
+      font-size: calculateRem(32);
+      font-weight: 400;
+      line-height: calculateRem(42.67);
+      @media only screen and (min-width: 1366px) and (max-width: 1919px) {
+        width: calculateRem(283);
+        font-size: calculateRem(24);
+        line-height: calculateRem(32);
+      }
+    }
+  }
+  .every-month_prize {
+    max-width: calculateRem(1546);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    @media only screen and (min-width: 1366px) and (max-width: 1919px) {
+      min-width: calculateRem(1160);
+    }
+    .prizes_items {
+      width: calculateRem(1546);
+      display: flex;
+      justify-content: center;
+      gap: calculateRem(53.33);
+      margin-bottom: calculateRem(53.33);
+      @media only screen and (min-width: 1366px) and (max-width: 1919px) {
+        gap: calculateRem(40);
+        margin-bottom: calculateRem(41);
+      }
+      .prize_item {
+        width: calculateRem(480);
+        height: calculateRem(538.66);
+        @include flex_column;
+        position: relative;
+        @media only screen and (min-width: 1366px) and (max-width: 1919px) {
+          max-width: calculateRem(400);
+          min-width: calculateRem(360);
+          width: 100%;
+          height: calculateRem(405);
+        }
+        .prize_item__img {
+          height: calculateRem(377.33);
+          width: auto;
+          @media only screen and (min-width: 1366px) and (max-width: 1919px) {
+            height: calculateRem(283);
+            width: auto;
+          }
+        }
+        .prize_item__text {
+          width: calculateRem(480);
+          height: calculateRem(400);
+          border-radius: calculateRem(48);
+          background-color: $color_yellow;
+          position: absolute;
+          bottom: 0;
+          z-index: -1;
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+          font-size: calculateRem(32);
+          padding-bottom: calculateRem(62.33);
+          @media only screen and (min-width: 1366px) and (max-width: 1919px) {
+            width: calculateRem(360);
+            height: calculateRem(300);
+          }
+        }
+      }
+    }
+  }
+  .button_prizes {
+    width: calculateRem(480);
+    height: calculateRem(80.33);
+    background-color: $color_blue;
+    color: $color_white;
+    font-family: 'CirceBold', Arial, Helvetica, sans-serif;
+    font-size: calculateRem(32);
+    padding-top: calculateRem(26.67);
+    padding-bottom: calculateRem(26.67);
+    border-radius: calculateRem(18.67);
+    border: none;
+    @media only screen and (min-width: 1366px) and (max-width: 1919px) {
+      width: calculateRem(360);
+      height: calculateRem(60);
+      font-size: calculateRem(24);
+      padding: calculateRem(20) 0;
+    }
+  }
+}
+
+.curl {
+  width: calculateRem(196);
+  position: absolute;
+  left: calculateRem(128);
+  top: calculateRem(120);
+  @media only screen and (min-width: 1366px) and (max-width: 1919px) {
+    width: calculateRem(147);
+    left: calculateRem(96);
+    top: calculateRem(90);
+  }
+}
+.lemon {
+  width: calculateRem(141.33);
+  position: absolute;
+  right: calculateRem(0);
+  top: calculateRem(690.67);
+  @media only screen and (min-width: 1366px) and (max-width: 1919px) {
+    width: calculateRem(106);
+    right: calculateRem(0);
+    top: calculateRem(518);
+  }
+}

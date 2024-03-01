@@ -1,0 +1,32 @@
+@import './mixins.scss';
+@import './variables.scss';
+
+@function calculateRem($pxsize) {
+  @return calc(($pxsize/16)) + rem;
+}
+
+.footer {
+  margin-top: calculateRem(104.34);
+  padding-bottom: calculateRem(54.67);
+  @media only screen and (min-width: 1366px) and (max-width: 1919px) {
+    margin-top: calculateRem(79);
+    padding-bottom: calculateRem(41);
+  }
+  .footer_nav {
+    display: flex;
+    margin: 0 auto;
+    width: calculateRem(835);
+    justify-content: space-between;
+    align-items: center;
+    @media only screen and (min-width: 1366px) and (max-width: 1919px) {
+      width: calculateRem(627);
+    }
+    .footer_link {
+      color: $color_black;
+      font-size: calculateRem(24);
+      @media only screen and (min-width: 1366px) and (max-width: 1919px) {
+        font-size: calculateRem(18);
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+@function remy($pxsize) {
+  @return calc(($pxsize/16)) + rem;
+}
+
+@function calculateRem($size) {
+  $remSize: $size / 18px;
+  @return #{$remSize}rem;
+}
