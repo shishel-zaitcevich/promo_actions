@@ -12,6 +12,10 @@
     margin-top: calculateRem(79);
     padding-bottom: calculateRem(41);
   }
+  @media only screen and (min-width: 360px) and (max-width: 414px) {
+    margin-top: calculateRem(50);
+    padding-bottom: calculateRem(50);
+  }
   .footer_nav {
     display: flex;
     margin: 0 auto;
@@ -21,11 +25,23 @@
     @media only screen and (min-width: 1366px) and (max-width: 1919px) {
       width: calculateRem(627);
     }
+    @media only screen and (min-width: 360px) and (max-width: 414px) {
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: calculateRem(30);
+      width: calculateRem(155);
+    }
     .footer_link {
       color: $color_black;
       font-size: calculateRem(24);
+      text-transform: uppercase;
       @media only screen and (min-width: 1366px) and (max-width: 1919px) {
         font-size: calculateRem(18);
+      }
+      @media only screen and (min-width: 360px) and (max-width: 414px) {
+        width: 100%;
+        font-size: calculateRem(14);
+        text-align: center;
       }
     }
   }

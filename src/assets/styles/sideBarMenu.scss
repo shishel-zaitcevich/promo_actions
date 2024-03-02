@@ -1,0 +1,86 @@
+@import '../../assets/styles/mixins.scss';
+@import '../../assets/styles/variables.scss';
+
+@function calculateRem($pxsize) {
+  @return calc(($pxsize/16)) + rem;
+}
+
+.sideBar_menu {
+  top: 0;
+  position: relative;
+  width: 82%;
+}
+
+.sidebar_img {
+  position: absolute;
+  right: calculateRem(0);
+  top: 65%;
+}
+
+.bm-menu {
+  background: #fff;
+  padding: calculateRem(70) calculateRem(20) 0;
+  font-size: 1.15em;
+}
+
+.bm-burger-button {
+  position: fixed;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+  width: calculateRem(36);
+  height: calculateRem(21);
+  right: 20px;
+  top: 20px;
+}
+
+.bm-burger-bars {
+  background: #fcfcfc;
+  width: 100%;
+  height: calculateRem(3) !important;
+  border-radius: 5px;
+}
+
+.bm-cross-button {
+  right: calculateRem(20);
+  top: calculateRem(20);
+  height: calculateRem(20) !important;
+  width: calculateRem(19.33) !important;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+}
+
+.bm-cross {
+  background: $color_black;
+  height: 25px !important;
+  width: 5px !important;
+  border-radius: 5px;
+}
+
+.bm-item {
+  display: inline-block;
+  text-decoration: none;
+  margin-bottom: calculateRem(40);
+  color: $color_black;
+  transition: color 0.2s;
+  font-size: calculateRem(18);
+  line-height: calculateRem(24);
+}
+
+.bm-item.button_sidebar {
+  font-size: calculateRem(20);
+  max-width: calculateRem(335);
+  width: 100%;
+  max-height: calculateRem(52);
+  height: 100%;
+  margin-top: calculateRem(10);
+  background-color: $color_blue;
+  border: none;
+  border-radius: calculateRem(18.67);
+  color: $color_white;
+  font-family: 'CirceBold', Arial, Helvetica, sans-serif;
+  cursor: pointer;
+}
+
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+  top: 0;
+  right: 0;
+}

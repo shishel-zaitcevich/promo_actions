@@ -20,7 +20,7 @@ export function MainContent() {
           <h2 className="prizes_title">ВЫИГРЫВАЙ ПРИЗЫ</h2>
           <h3 className="guaranted_title">Гарантированный приз</h3>
           <section className="receipt_registration">
-            <img src="/images/chips.png" alt="chips" className="chips" />
+            <img src="images/chips.png" alt="chips" className="chips" />
             <p className="text">
               Зарегистрируйте один чек и получите подписку Яндекс Плюс на 1 год
             </p>

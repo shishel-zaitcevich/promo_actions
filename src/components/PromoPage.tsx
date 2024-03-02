@@ -8,7 +8,7 @@ export function PromoPage() {
       <div className="wrapper">
         <Header />
         <MainContent />
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </>
   );
