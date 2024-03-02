@@ -11,7 +11,9 @@ export function PrizeItem({ data }: { data: ItemsType[] }) {
             alt={item.description}
             className={`prize_item__img  item-${index}`}
           />
-          <p className="prize_item__text">{item.description}</p>
+          <div className="prize_item__text_container">
+            <p className="prize_item__text">{item.description}</p>
+          </div>
         </div>
       ))}
     </div>
