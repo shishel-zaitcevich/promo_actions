@@ -4,6 +4,8 @@ import ModalWindow from '../utils/modalWindow/modalWindow';
 import { Button, Container } from '@mui/material';
 import { useState } from 'react';
 import { SignUpForm } from '../forms/SignUpForm';
+import CloseButton from '../utils/CloseButton';
+import { SuccessMessage } from '../utils/SuccessMessage';
 
 export function Navigation() {
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
@@ -32,7 +34,7 @@ export function Navigation() {
         <NavLink to="/prizes" className={`link`}>
           ПРИЗЫ
         </NavLink>
-        <NavLink to="/how_to_ participate" className={`link`}>
+        <NavLink to="/participate" className={`link`}>
           КАК УЧАСТВОВАТЬ
         </NavLink>
         <NavLink to="/questions_and_answers" className={`link `}>
@@ -41,37 +43,19 @@ export function Navigation() {
         <button className={`button`} onClick={handleOpenModal}>
           ЛИЧНЫЙ КАБИНЕТ
         </button>
+
         <ModalWindow isOpen={isFormModalOpen} onClose={handleCloseModal}>
-          <div className="modal_content">
-            <Container className="">
-              <Button
-                // id="cross_button"
-                // className="header_form_button_close"
-                // style={{
-                //   position: 'absolute',
-                //   left: '444px',
-                //   top: '3%',
-                //   outline: 'none!important',
-                // }}
-                onClick={handleCloseModal}
-              >
-                <img
-                  src="assets/icons/cross-icon.svg"
-                  alt="cross-icon"
-                  style={{ width: 30 }}
-                />
-              </Button>
-              {/* <HeaderForm onFormSubmitAction={onFormSubmitAction} /> */}
-              <SignUpForm onFormSubmitAction={onFormSubmitAction} />
-            </Container>
-          </div>
+          <Container className="form_container">
+            <CloseButton onClick={handleCloseModal} />
+            <SignUpForm onFormSubmitAction={onFormSubmitAction} />
+          </Container>
         </ModalWindow>
-        {/* <ModalWindow
-        isOpen={isSuccessModalOpen}
-        onClose={handleCloseSuccessModal}
-      >
-        <SuccessMessage handleCloseModal={handleCloseSuccessModal} />
-      </ModalWindow> */}
+        <ModalWindow
+          isOpen={isSuccessModalOpen}
+          onClose={handleCloseSuccessModal}
+        >
+          <SuccessMessage handleCloseModal={handleCloseSuccessModal} />
+        </ModalWindow>
       </nav>
     );
   } else {

@@ -224,8 +224,8 @@
       color: $color_white;
       font-family: 'CirceBold', Arial, Helvetica, sans-serif;
       font-size: calculateRem(32);
-      padding-top: calculateRem(26.67);
-      padding: calculateRem(26.67) 0;
+      line-height: 20px;
+      padding: calculateRem(20) 0;
       border-radius: calculateRem(18.67);
       border: none;
       cursor: pointer;

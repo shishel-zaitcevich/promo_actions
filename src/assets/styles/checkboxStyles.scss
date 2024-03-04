@@ -1,0 +1,53 @@
+@import './variables.scss';
+
+@function calculateRem($pxsize) {
+  @return calc(($pxsize/16)) + rem;
+}
+
+.custom-checkbox {
+  // Тут мы просто центрируем чекбокс и текст
+  display: flex;
+  align-items: center;
+}
+
+.custom-checkbox .checkbox {
+  margin-right: calculateRem(10);
+}
+
+.custom-checkbox input {
+  -webkit-appearance: none; // Скрываем оригинальный чекбокс
+  position: absolute; // После скрытия оставется пустое пространство,
+  // но абсолютное позиционирование это устранит
+}
+
+.checkbox {
+  // Тут стилизуем сам чекбокс
+  position: relative;
+  width: calculateRem(24);
+  height: calculateRem(24);
+  border: calculateRem(2) solid $color_white;
+  background: $color_white;
+  border-radius: calculateRem(8);
+}
+
+.checkmark {
+  // Тут центритуем и пишем стили для иконки
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: auto;
+  display: none; // Скрываем иконку
+}
+
+.custom-checkbox input:checked ~ .checkbox .checkmark {
+  display: block; // Показываем иконку, когда чекбокс активен
+}
+
+.custom-checkbox input:checked ~ .checkbox {
+  background: $color_blue;
+  border: calculateRem(2) solid $color_blue;
+  // Если вы хотите не только отображать икнонку, но и менять
+  // сам чекбокс после активации - напишите сюда код для активного состояния
+}

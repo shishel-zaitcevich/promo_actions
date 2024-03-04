@@ -1,0 +1,165 @@
+@import '../styles/mixins.scss';
+@import '../styles/variables.scss';
+
+@function calculateRem($pxsize) {
+  @return calc(($pxsize/16)) + rem;
+}
+
+.MuiContainer-root {
+  max-width: calculateRem(580) !important;
+  min-width: calculateRem(360);
+  width: 100%;
+  min-height: calculateRem(674);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  // .MuiButtonBase-root {
+  //   width: calculateRem(19.33) !important;
+  //   height: calculateRem(20) !important;
+  //   font-weight: bold !important;
+  //   position: absolute;
+  //   z-index: 3;
+  //   color: $color_black;
+  // }
+  .MuiIconButton-root {
+    width: calculateRem(19.33) !important;
+    height: calculateRem(20) !important;
+    font-weight: bold !important;
+    position: absolute;
+    top: calculateRem(30);
+    right: calculateRem(29.67);
+    z-index: 3;
+    color: $color_black;
+    outline: none !important;
+  }
+  .MuiSvgIcon-fontSizeLarge {
+    width: calculateRem(67) !important;
+    height: calculateRem(35) !important;
+    font-weight: 700 !important;
+    font-size: large;
+  }
+  .form {
+    // max-width: calculateRem(580);
+    // min-width: calculateRem(360);
+    width: 100%;
+    min-height: 100%;
+    background-color: $color_yellow;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: calculateRem(20);
+    border-radius: calculateRem(36);
+    padding: calculateRem(40) 0;
+    .MuiGrid-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      .MuiGrid-item {
+        min-height: calculateRem(95);
+        .MuiFormLabel-root {
+          font-family: 'CirceBold', Arial, Helvetica, sans-serif;
+          font-size: calculateRem(18);
+          color: $color_black;
+          font-weight: 700;
+        }
+        .MuiFormControl-root {
+          margin: 0;
+        }
+        .MuiInputBase-root {
+          background: $color_white;
+          width: calculateRem(400);
+          // min-width: calculateRem(335);
+          // width: 100%;
+          max-height: calculateRem(60);
+          // min-height: calculateRem(48);
+          height: 100%;
+          border-radius: calculateRem(14);
+          .MuiOutlinedInput-notchedOutline {
+            font-size: calculateRem(18);
+            font-family: Circe;
+            font-weight: 400;
+            word-wrap: break-word;
+          }
+        }
+      }
+    }
+  }
+  .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: $color_black !important;
+  }
+  .form_title {
+    font-size: calculateRem(44);
+  }
+}
+
+.checkbox_container {
+  max-width: calculateRem(380);
+  min-height: calculateRem(66);
+  padding-top: calculateRem(14);
+  display: flex;
+  align-items: flex-start;
+  .MuiCheckbox-root {
+    padding: 0;
+  }
+}
+.checkbox_text {
+  font-size: calculateRem(18);
+  font-family: 'CirceBold', Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  line-height: 21.6px;
+  word-wrap: break-word;
+  .checkbox_link {
+    text-decoration: underline;
+    color: $color_blue;
+  }
+}
+
+.login_text {
+  font-size: calculateRem(24);
+  font-weight: 400;
+  .login_text__link {
+    color: $color_blue;
+    text-decoration: underline;
+  }
+}
+
+.signup_button {
+  width: calculateRem(400);
+  line-height: calculateRem(60);
+  background-color: $color_blue;
+  color: $color_white;
+  font-family: 'CirceBold', Arial, Helvetica, sans-serif;
+  font-size: calculateRem(24);
+  border-radius: calculateRem(18.67);
+  margin: calculateRem(20) 0;
+  border: none;
+  cursor: pointer;
+  // @media only screen and (min-width: 1366px) and (max-width: 1919px) {
+  //   width: calculateRem(360);
+  //   height: calculateRem(60);
+  //   font-size: calculateRem(24);
+  //   padding: calculateRem(20) 0;
+  // }
+}
+
+.custom_helper_text {
+  color: $color_red !important;
+  font-family: 'CirceBold', Arial, Helvetica, sans-serif !important;
+  margin-top: calculateRem(4) !important;
+  font-size: calculateRem(14) !important;
+  font-weight: 700 !important;
+  padding-right: 10px;
+}
