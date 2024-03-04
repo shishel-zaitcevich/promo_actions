@@ -1,24 +1,48 @@
-import { ChangeEvent, forwardRef, useEffect, useState } from 'react';
+import {
+  ChangeEvent,
+  HTMLAttributes,
+  forwardRef,
+  useEffect,
+  useState,
+} from 'react';
 import '../../assets/styles/checkboxStyles.scss';
 import React from 'react';
 
-interface CheckboxProps {
-  isChecked: boolean | undefined;
-  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  // handleChange: () => void;
+// interface CheckboxProps extend HTMLAttributes<HTMLInputElement> {
+//   // isChecked: boolean | undefined;
+//   // handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+//   // handleChange: () => void;
+
+//   id: string;
+//   // error: boolean;
+// }
+
+interface CheckboxProps extends HTMLAttributes<HTMLInputElement> {
   id: string;
-  error: boolean;
+  checked?: boolean;
 }
 
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ isChecked, handleChange, id, error }, ref) => {
+  ({ id, checked, ...rest }, ref) => {
+    // const [checked, setChecked] = useState(false);
+    // useEffect(() => {
+    //   if (onChange) {
+    //     onChange(checked);
+    //   }
+    // }, []);
     return (
       <label className="custom-checkbox">
         <input
           className="hidden-checkbox"
           type="checkbox"
-          checked={isChecked}
-          onChange={handleChange}
+          // checked={checked}
+          {...rest}
+          // value={checked??false}
+          // onChange={(e) => {
+          //   setChecked(e.target.checked);
+          // }}
+          // checked={isChecked}
+          // onChange={handleChange}
           ref={ref}
         ></input>
         <div className="checkbox">

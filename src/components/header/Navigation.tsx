@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { SideBar } from './SideBarMenu';
 import ModalWindow from '../utils/modalWindow/modalWindow';
 import { Button, Container } from '@mui/material';
+import { Link } from 'react-scroll';
 import { useState } from 'react';
 import { SignUpForm } from '../forms/SignUpForm';
 import CloseButton from '../utils/CloseButton';
@@ -31,9 +32,9 @@ export function Navigation() {
         <NavLink className={`link `} to="/">
           ГЛАВНАЯ
         </NavLink>
-        <NavLink to="/prizes" className={`link`}>
+        <Link to="prizes" className={`link`} smooth={true} duration={2000}>
           ПРИЗЫ
-        </NavLink>
+        </Link>
         <NavLink to="/participate" className={`link`}>
           КАК УЧАСТВОВАТЬ
         </NavLink>

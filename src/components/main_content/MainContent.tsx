@@ -6,16 +6,9 @@ import { SignUpForm } from '../forms/SignUpForm';
 import CloseButton from '../utils/CloseButton';
 import ModalWindow from '../utils/modalWindow/modalWindow';
 import { useState } from 'react';
+import { SuccessMessage } from '../utils/SuccessMessage';
 
 export function MainContent() {
-  // document.documentElement.style.setProperty(
-  //   '--window-inner-width',
-  //   `${window.innerWidth}px`
-  // );
-  // document.documentElement.style.setProperty(
-  //   '--window-inner-height',
-  //   `${window.innerHeight}px`
-  // );
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
   const handleCloseSuccessModal = () => {
@@ -34,7 +27,7 @@ export function MainContent() {
     setIsFormModalOpen(false);
   };
   return (
-    <div className="main_wrapper">
+    <div className="main_wrapper" id="prizes">
       <img src="images/green_curl.svg" alt="curl" className="curl" />
       <img src="images/lemon.png" alt="lemon" className="lemon" />
       <main className="container">
@@ -59,6 +52,12 @@ export function MainContent() {
               <CloseButton onClick={handleCloseModal} />
               <SignUpForm onFormSubmitAction={onFormSubmitAction} />
             </Container>
+          </ModalWindow>
+          <ModalWindow
+            isOpen={isSuccessModalOpen}
+            onClose={handleCloseSuccessModal}
+          >
+            <SuccessMessage handleCloseModal={handleCloseSuccessModal} />
           </ModalWindow>
         </div>
       </main>

@@ -3,6 +3,11 @@ import { slide as Menu, Props } from 'react-burger-menu';
 import '../../assets/styles/sideBarMenu.scss';
 import { Link, NavLink } from 'react-router-dom';
 import '../../assets/styles/header.scss';
+import ModalWindow from '../utils/modalWindow/modalWindow';
+import { Container } from '@mui/material';
+import { SignUpForm } from '../forms/SignUpForm';
+import CloseButton from '../utils/CloseButton';
+import { SuccessMessage } from '../utils/SuccessMessage';
 
 // import ModalWindow from '../utils/modalWindow';
 // import { Button, Container } from '@mui/material';
@@ -14,33 +19,23 @@ export function SideBar(
     JSX.IntrinsicClassAttributes<Menu> &
     Readonly<Props>
 ) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isFormModalOpen, setIsFormModalOpen] = useState(false);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
-
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    console.log('modal window is open');
-  };
-
   const handleCloseSuccessModal = () => {
     setIsSuccessModalOpen(false);
   };
   const onFormSubmitAction = () => {
     setIsSuccessModalOpen(true);
-    setIsModalOpen(false);
+    setIsFormModalOpen(false);
   };
 
-  useEffect(() => {
-    const sideBarIcon: HTMLElement | null =
-      document.querySelector('.bm-burger-button');
-    if (location.pathname.includes('/medicine') && sideBarIcon !== null) {
-      sideBarIcon.style.background = 'rgb(44, 104, 158)';
-    }
-  }, []);
+  const handleOpenModal = () => {
+    setIsFormModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsFormModalOpen(false);
+  };
 
   return (
     <Menu {...props} className="sideBar_menu">
@@ -49,40 +44,21 @@ export function SideBar(
       <NavLink to="/prizes">ПРИЗЫ</NavLink>
       <NavLink to="/how_to_ participate">КАК УЧАСТВОВАТЬ</NavLink>
       <NavLink to="/questions_and_answers">ВОПРОСЫ И ОТВЕТЫ</NavLink>
-      <button
-        className={`button_sidebar`}
-        // onClick={handleOpenModal}
-      >
+      <button className={`button_sidebar`} onClick={handleOpenModal}>
         ЛИЧНЫЙ КАБИНЕТ
       </button>
-      {/* <ModalWindow isOpen={isModalOpen} onClose={handleCloseModal}>
-        <div className="modal_content">
-          <Container>
-            <Button
-              style={{
-                position: 'absolute',
-                top: '4%',
-                left: 444,
-                outline: 'none!important',
-              }}
-              onClick={handleCloseModal}
-            >
-              <img
-                src="assets/icons/cross-icon.svg"
-                alt="cross-icon"
-                style={{ width: 30 }}
-              />
-            </Button>
-            <HeaderForm onFormSubmitAction={onFormSubmitAction} />
-          </Container>
-        </div>
+      <ModalWindow isOpen={isFormModalOpen} onClose={handleCloseModal}>
+        <Container className="form_container">
+          <CloseButton onClick={handleCloseModal} />
+          <SignUpForm onFormSubmitAction={onFormSubmitAction} />
+        </Container>
       </ModalWindow>
       <ModalWindow
         isOpen={isSuccessModalOpen}
         onClose={handleCloseSuccessModal}
       >
         <SuccessMessage handleCloseModal={handleCloseSuccessModal} />
-      </ModalWindow> */}
+      </ModalWindow>
     </Menu>
   );
 }

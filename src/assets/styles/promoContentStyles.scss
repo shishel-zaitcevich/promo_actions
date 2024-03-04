@@ -6,7 +6,8 @@
 }
 
 .main_wrapper {
-  width: 100vw;
+  // width: 100vw;
+  width: var(--window-inner-width);
   max-height: 1427px;
   // height: 100%;
   position: relative;

@@ -2,7 +2,7 @@ import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import TextField from '@mui/material/TextField';
 import { FormHelperText, InputAdornment, InputLabel } from '@mui/material';
-import { FormControlLabel, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
 import '../../assets/styles/signUpForm.scss';
 
 import { formSubmit } from '../utils/formSubmit';
@@ -15,14 +15,20 @@ export interface FormDataType {
   rules1: boolean;
 }
 
+export interface backendErrorsType {
+  name?: string[];
+  login?: string[];
+  phone?: string[];
+  rules1?: string[];
+}
+
 interface FormProps {
   onFormSubmitAction?: () => void;
 }
 
 export const SignUpForm: React.FC<FormProps> = ({ onFormSubmitAction }) => {
   const [isFocused, setIsFocused] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isChecked, setIsChecked] = useState<boolean>(false);
+  const [backendErrors, setBackendErrors] = useState<backendErrorsType>({});
 
   const {
     control,
@@ -30,6 +36,9 @@ export const SignUpForm: React.FC<FormProps> = ({ onFormSubmitAction }) => {
     register,
     resetField,
     formState: { errors },
+    watch,
+    getValues,
+    setValue,
   } = useForm<FormDataType>({
     defaultValues: {
       name: '',
@@ -38,41 +47,18 @@ export const SignUpForm: React.FC<FormProps> = ({ onFormSubmitAction }) => {
       rules1: false,
     },
   });
+  const handleFocus = () => setIsFocused(true);
+  const handleBlur = () => setIsFocused(false);
+
+  useEffect(() => {
+    if (backendErrors && isFocused) {
+      setBackendErrors({});
+    }
+  }, [backendErrors]);
 
   const PHONENUMBERREGEXP = /^\+7\d{10}$/;
   const EMAILREGEXP = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
   const WRONGINPUT = 'Неверный формат ввода поля';
-
-  // console.log('isChecked', isChecked);
-  // useEffect(() => {
-  //   handleCheckboxChange();
-  // }, []);
-  console.log('initial', isChecked);
-  // const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
-  //   console.log('first', isChecked);
-  //   setIsChecked(e.target.checked);
-  //   console.log('after', e.target.checked);
-
-  const handleCheckboxChange = () => {
-    const newCheckedValue = !isChecked; // Инвертируем текущее значение isChecked
-    setIsChecked(newCheckedValue); // Обновляем состояние isChecked
-  };
-
-  // if (isChecked === false) {
-  //   setIsChecked(true);
-  //   console.log('(isChecked === false) {', isChecked);
-  // } else {
-  //   setIsChecked(false);
-  //   console.log('(isChecked === true) {', isChecked);
-  // }
-  // };
-
-  // const handleCheckboxChange = (isChecked: boolean) => {
-  //   console.log('handleCheckboxChange is called'); // добавьте этот console.log
-  //   console.log('first', isChecked);
-  //   setIsChecked(!isChecked);
-  //   console.log('setischecked', isChecked);
-  // };
 
   const resetForm = () => {
     resetField('name');
@@ -81,46 +67,40 @@ export const SignUpForm: React.FC<FormProps> = ({ onFormSubmitAction }) => {
     resetField('rules1');
   };
 
-  // const handleFormSubmit = () => {
-  //   if (onFormSubmitAction) {
-  //     handleSubmit((formData) =>
-  //       formSubmit(formData, resetForm, onFormSubmitAction)
-  //     )();
-
-  //     console.log('Form submitted');
-  //     console.log('isChecked', isChecked);
-  //   }
-  // };
-
-  const handleFormSubmit = (formData: FormDataType) => {
+  const handleFormSubmit = async (formData: FormDataType) => {
     console.log('handleFormSubmit', formData.rules1);
     if (onFormSubmitAction) {
-      formSubmit(formData, resetForm, onFormSubmitAction);
+      const data = {
+        ...formData,
+        rules1:
+          typeof formData.rules1 === 'string'
+            ? JSON.parse(formData.rules1)
+            : formData.rules1,
+      };
+
+      console.log('data', data);
+
+      formSubmit(data, resetForm, onFormSubmitAction);
+      const response: backendErrorsType | undefined = await formSubmit(
+        data,
+        resetForm,
+        onFormSubmitAction
+      );
+      if (response) {
+        setBackendErrors(response);
+      }
       console.log('Form submitted');
       console.log('isChecked', formData.rules1); // Здесь получите значение из поля rules1
     }
   };
-  const handleFocus = () => setIsFocused(true);
 
   return (
-    // <form
-    //   onSubmit={handleSubmit((data) => handleFormSubmit(data))}
-    //   className="form"
-    // >
-    // <form onSubmit={handleSubmit(handleFormSubmit)} className="form">
-    <form
-      onSubmit={handleSubmit((formData) => handleFormSubmit(formData))}
-      className="form"
-    >
+    <form onSubmit={handleSubmit(handleFormSubmit)} className="form">
       <h3 className="form_title">РЕГИСТРАЦИЯ</h3>
 
       <Grid container direction="column" spacing={2}>
         <Grid item>
-          <InputLabel
-            shrink
-            // htmlFor="name"
-            className="input_label"
-          >
+          <InputLabel shrink className="input_label">
             ФИО
           </InputLabel>
           <Controller
@@ -138,12 +118,19 @@ export const SignUpForm: React.FC<FormProps> = ({ onFormSubmitAction }) => {
                   {...register('name', {
                     required: 'Необходимо заполнить «Имя».',
                   })}
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
                   error={!!errors.name}
                 />
                 <FormHelperText
-                  className={errors.name ? 'custom_helper_text' : ''}
+                  className={
+                    errors.name || backendErrors ? 'custom_helper_text' : ''
+                  }
                 >
-                  {errors.name?.message}
+                  {errors.name?.message ||
+                    (isFocused ? '' : backendErrors.name?.join(', '))}
+                  {/* {errors.name?.message}
+                  {backendErrors.name?.join(', ')} */}
                 </FormHelperText>
               </>
             )}
@@ -151,11 +138,7 @@ export const SignUpForm: React.FC<FormProps> = ({ onFormSubmitAction }) => {
         </Grid>
 
         <Grid item>
-          <InputLabel
-            shrink
-            // htmlFor="login"
-            className="input_label"
-          >
+          <InputLabel shrink className="input_label">
             E-mail
           </InputLabel>
           <Controller
@@ -167,7 +150,6 @@ export const SignUpForm: React.FC<FormProps> = ({ onFormSubmitAction }) => {
                   placeholder="Введите e-mail"
                   {...field}
                   id="email"
-                  onFocus={handleFocus}
                   fullWidth
                   variant="outlined"
                   margin="normal"
@@ -178,12 +160,15 @@ export const SignUpForm: React.FC<FormProps> = ({ onFormSubmitAction }) => {
                       message: WRONGINPUT,
                     },
                   })}
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
                   error={!!errors.login}
                 />
                 <FormHelperText
                   className={errors.login ? 'custom_helper_text' : ''}
                 >
-                  {errors.login?.message}
+                  {errors.login?.message ||
+                    (isFocused ? '' : backendErrors.login?.join(', '))}
                 </FormHelperText>
               </>
             )}
@@ -191,11 +176,7 @@ export const SignUpForm: React.FC<FormProps> = ({ onFormSubmitAction }) => {
         </Grid>
 
         <Grid item>
-          <InputLabel
-            shrink
-            //  htmlFor="phone"
-            className="input_label"
-          >
+          <InputLabel shrink className="input_label">
             Телефон
           </InputLabel>
           <Controller
@@ -206,7 +187,6 @@ export const SignUpForm: React.FC<FormProps> = ({ onFormSubmitAction }) => {
                 <TextField
                   placeholder={'+7'}
                   {...field}
-                  // onFocus={handleFocus}
                   id="phone"
                   fullWidth
                   variant="outlined"
@@ -218,12 +198,15 @@ export const SignUpForm: React.FC<FormProps> = ({ onFormSubmitAction }) => {
                       message: WRONGINPUT,
                     },
                   })}
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
                   error={!!errors.phone}
                 />
                 <FormHelperText
                   className={errors.phone ? 'custom_helper_text' : ''}
                 >
-                  {errors.phone?.message}
+                  {errors.phone?.message ||
+                    (isFocused ? '' : backendErrors.phone?.join(', '))}
                 </FormHelperText>
               </>
             )}
@@ -235,23 +218,26 @@ export const SignUpForm: React.FC<FormProps> = ({ onFormSubmitAction }) => {
           <Controller
             name="rules1"
             control={control}
-            // rules={{ required: 'Необходимо принять условия.' }}
+            defaultValue={false}
             render={({ field }) => (
               <>
                 <Checkbox
-                  isChecked={isChecked}
-                  handleChange={handleCheckboxChange}
+                  checked={field.value}
                   {...field}
                   id="rules1"
                   {...register('rules1', {
                     required: 'Необходимо принять условия.',
                   })}
-                  error={!isChecked && !!errors.rules1}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                    setValue('rules1', e.target.checked);
+                  }}
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
                 />
                 <FormHelperText
                   className={errors.rules1 ? 'custom_helper_text' : ''}
                 >
-                  {isChecked ? '' : errors.rules1?.message}
+                  {getValues('rules1') ? '' : errors.rules1?.message}
                 </FormHelperText>
               </>
             )}

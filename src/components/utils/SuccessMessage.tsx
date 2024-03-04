@@ -18,7 +18,9 @@ export function SuccessMessage(
       <img src="images/icon_ok.png" className="success_icon" alt="ico" />
       <h2 className="success_title">ВАША РЕГИСТРАЦИЯ ПРОШЛА УСПЕШНО!</h2>
       <p className="success_text">Добро пожаловать, {formdata.name}!</p>
-      <button className="signup_button ">ЗАКРЫТЬ ОКНО</button>
+      <button className="signup_button" onClick={handleCloseModal}>
+        ЗАКРЫТЬ ОКНО
+      </button>
     </Container>
   );
 }

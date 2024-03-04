@@ -6,9 +6,11 @@
 }
 
 .header {
-  width: 100vw;
+  // width: 100vw;
+  width: var(--window-inner-width);
+  height: var(--window-inner-height);
   background-color: $color_green;
-  height: 100vh;
+  // height: 100vh;
   position: relative;
   .header_top {
     max-width: calculateRem(1546);
@@ -52,6 +54,7 @@
     .link {
       color: $color_black;
       font-size: calculateRem(24);
+      cursor: pointer;
       @media only screen and (min-width: 1366px) and (max-width: 1919px) {
         font-size: calculateRem(18);
       }
