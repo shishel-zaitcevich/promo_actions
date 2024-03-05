@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-
 import { NavLink } from 'react-router-dom';
+
+import { Link, animateScroll as scroll } from 'react-scroll';
 
 import '../../assets/styles/footer.scss';
 
@@ -20,15 +21,27 @@ export function Footer() {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
   return (
     <footer className="footer" style={{ width: windowSize.width }}>
       <nav className="footer_nav">
-        <NavLink className={`footer_link `} to="/">
+        <Link
+          to="top"
+          className={`link footer_link`}
+          smooth={true}
+          duration={500}
+          onClick={scroll.scrollToTop}
+        >
           ГЛАВНАЯ
-        </NavLink>
-        <NavLink to="/prizes" className={`footer_link`}>
+        </Link>
+        <Link
+          to="prizes"
+          className={`link footer_link`}
+          smooth={true}
+          duration={2000}
+        >
           ПРИЗЫ
-        </NavLink>
+        </Link>
         <NavLink to="/how_t_ participate" className={`footer_link`}>
           КАК УЧАСТВОВАТЬ
         </NavLink>
