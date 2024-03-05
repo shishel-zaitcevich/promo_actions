@@ -18,14 +18,11 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  // .MuiButtonBase-root {
-  //   width: calculateRem(19.33) !important;
-  //   height: calculateRem(20) !important;
-  //   font-weight: bold !important;
-  //   position: absolute;
-  //   z-index: 3;
-  //   color: $color_black;
-  // }
+  @media only screen and (min-width: 360px) and (max-width: 767px) {
+    max-width: 100% !important;
+    min-height: 100%;
+    top: 55%;
+  }
   .MuiIconButton-root {
     width: calculateRem(19.33) !important;
     height: calculateRem(20) !important;
@@ -36,16 +33,22 @@
     z-index: 3;
     color: $color_black;
     outline: none !important;
+    @media only screen and (min-width: 360px) and (max-width: 767px) {
+      top: calculateRem(15);
+      right: calculateRem(15.4);
+    }
   }
   .MuiSvgIcon-fontSizeLarge {
     width: calculateRem(67) !important;
     height: calculateRem(35) !important;
     font-weight: 700 !important;
     font-size: large;
+    @media only screen and (min-width: 360px) and (max-width: 767px) {
+      width: calculateRem(20) !important;
+      height: calculateRem(20) !important;
+    }
   }
   .form {
-    // max-width: calculateRem(580);
-    // min-width: calculateRem(360);
     width: 100%;
     min-height: 100%;
     background-color: $color_yellow;
@@ -60,6 +63,10 @@
     gap: calculateRem(20);
     border-radius: calculateRem(36);
     padding: calculateRem(40) 0;
+    @media only screen and (min-width: 360px) and (max-width: 767px) {
+      gap: calculateRem(14);
+      padding: calculateRem(28) 0;
+    }
     .MuiGrid-container {
       width: 100%;
       height: 100%;
@@ -67,13 +74,24 @@
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
+      @media only screen and (min-width: 360px) and (max-width: 767px) {
+        margin: calculateRem(0) auto;
+      }
       .MuiGrid-item {
         min-height: calculateRem(95);
+        @media only screen and (min-width: 360px) and (max-width: 767px) {
+          max-width: calculateRem(335);
+          padding: 0;
+          min-height: calculateRem(78);
+        }
         .MuiFormLabel-root {
           font-family: 'CirceBold', Arial, Helvetica, sans-serif;
           font-size: calculateRem(18);
           color: $color_black;
           font-weight: 700;
+          @media only screen and (min-width: 360px) and (max-width: 767px) {
+            font-size: calculateRem(14);
+          }
         }
         .MuiFormControl-root {
           margin: 0;
@@ -81,15 +99,16 @@
         .MuiInputBase-root {
           background: $color_white;
           width: calculateRem(400);
-          // min-width: calculateRem(335);
-          // width: 100%;
           max-height: calculateRem(60);
-          // min-height: calculateRem(48);
           height: 100%;
           border-radius: calculateRem(14);
+          @media only screen and (min-width: 360px) and (max-width: 767px) {
+            width: calculateRem(335);
+            max-height: calculateRem(48);
+          }
           .MuiOutlinedInput-notchedOutline {
             font-size: calculateRem(18);
-            font-family: Circe;
+            font-family: 'CirceBold', Arial, Helvetica, sans-serif;
             font-weight: 400;
             word-wrap: break-word;
           }
@@ -102,6 +121,9 @@
   }
   .form_title {
     font-size: calculateRem(44);
+    @media only screen and (min-width: 360px) and (max-width: 767px) {
+      font-size: calculateRem(28);
+    }
   }
 }
 
@@ -111,6 +133,11 @@
   padding-top: calculateRem(14);
   display: flex;
   align-items: flex-start;
+  @media only screen and (min-width: 360px) and (max-width: 767px) {
+    max-width: calculateRem(335);
+    min-height: calculateRem(5);
+    padding-top: 0;
+  }
   .MuiCheckbox-root {
     padding: 0;
   }
@@ -121,6 +148,9 @@
   font-weight: 400;
   line-height: calculateRem(21.6);
   word-wrap: break-word;
+  @media only screen and (min-width: 360px) and (max-width: 767px) {
+    font-size: calculateRem(16);
+  }
   .checkbox_link {
     text-decoration: underline;
     color: $color_blue;
@@ -130,6 +160,9 @@
 .login_text {
   font-size: calculateRem(24);
   font-weight: 400;
+  @media only screen and (min-width: 360px) and (max-width: 767px) {
+    font-size: calculateRem(16);
+  }
   .login_text__link {
     color: $color_blue;
     text-decoration: underline;
@@ -137,6 +170,9 @@
 }
 
 .signup_button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: calculateRem(400);
   line-height: calculateRem(60);
   background-color: $color_blue;
@@ -149,12 +185,12 @@
   margin: calculateRem(20) 0;
   border: none;
   cursor: pointer;
-  // @media only screen and (min-width: 1366px) and (max-width: 1919px) {
-  //   width: calculateRem(360);
-  //   height: calculateRem(60);
-  //   font-size: calculateRem(24);
-  //   padding: calculateRem(20) 0;
-  // }
+  @media only screen and (min-width: 360px) and (max-width: 767px) {
+    width: calculateRem(335);
+    height: calculateRem(48);
+    font-size: calculateRem(18);
+    margin: calculateRem(14) 0;
+  }
 }
 
 .custom_helper_text {

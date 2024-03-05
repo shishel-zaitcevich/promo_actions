@@ -15,14 +15,34 @@
   padding: calculateRem(40) 0;
   @include flex_column;
   gap: calculateRem(20);
+  @media only screen and (min-width: 360px) and (max-width: 767px) {
+    padding: calculateRem(48) 0;
+    min-height: calculateRem(386);
+    position: fixed;
+    top: 72%;
+  }
   .success_title {
     font-size: calculateRem(44);
     text-align: center;
     line-height: calculateRem(50);
+    @media only screen and (min-width: 360px) and (max-width: 767px) {
+      line-height: calculateRem(32);
+      font-size: calculateRem(28);
+    }
   }
   .success_text {
     font-size: calculateRem(24);
     text-align: center;
     line-height: calculateRem(32);
+    font-weight: 400;
+    @media only screen and (min-width: 360px) and (max-width: 767px) {
+      line-height: calculateRem(18);
+      font-size: calculateRem(16);
+    }
+  }
+  .success_icon {
+    @media only screen and (min-width: 360px) and (max-width: 767px) {
+      max-width: calculateRem(90);
+    }
   }
 }

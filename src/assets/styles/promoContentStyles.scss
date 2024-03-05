@@ -6,16 +6,15 @@
 }
 
 .main_wrapper {
-  // width: 100vw;
-  width: var(--window-inner-width);
-  max-height: 1427px;
-  // height: 100%;
   position: relative;
   margin-top: calculateRem(133);
   @media only screen and (min-width: 1366px) and (max-width: 1919px) {
     margin-top: calculateRem(100);
   }
-  @media only screen and (min-width: 360px) and (max-width: 414px) {
+  @media only screen and (min-width: 768px) and (max-width: 1365px) {
+    margin-top: calculateRem(60);
+  }
+  @media only screen and (min-width: 360px) and (max-width: 767px) {
     margin-top: calculateRem(50);
   }
   .content {
@@ -28,9 +27,11 @@
       max-width: calculateRem(1160);
       height: 70%;
     }
-    @media only screen and (min-width: 360px) and (max-width: 414px) {
+    @media only screen and (min-width: 768px) and (max-width: 1365px) {
+      max-width: 90%;
+    }
+    @media only screen and (min-width: 360px) and (max-width: 767px) {
       max-width: 100%;
-      min-width: calculateRem(335);
     }
     .prizes_title {
       font-size: calculateRem(69.33);
@@ -38,7 +39,10 @@
       @media only screen and (min-width: 1366px) and (max-width: 1919px) {
         font-size: calculateRem(52);
       }
-      @media only screen and (min-width: 360px) and (max-width: 414px) {
+      @media only screen and (min-width: 768px) and (max-width: 1365px) {
+        font-size: calculateRem(40);
+      }
+      @media only screen and (min-width: 360px) and (max-width: 767px) {
         font-size: calculateRem(28);
       }
     }
@@ -46,13 +50,12 @@
       font-size: calculateRem(42.67);
       margin-bottom: calculateRem(40);
       margin-top: calculateRem(53.33);
-
-      @media only screen and (min-width: 1366px) and (max-width: 1919px) {
+      @media only screen and (min-width: 768px) and (max-width: 1919px) {
         font-size: calculateRem(32);
         margin-bottom: calculateRem(30);
         margin-top: calculateRem(40);
       }
-      @media only screen and (min-width: 360px) and (max-width: 414px) {
+      @media only screen and (min-width: 360px) and (max-width: 767px) {
         font-size: calculateRem(20);
         margin-top: calculateRem(20);
         margin-bottom: calculateRem(10);
@@ -60,7 +63,6 @@
     }
     .receipt_registration {
       max-width: calculateRem(1546);
-      min-width: calculateRem(1160);
       width: 100%;
       height: calculateRem(400);
       display: flex;
@@ -75,7 +77,13 @@
         height: calculateRem(300);
         border-radius: calculateRem(36);
       }
-      @media only screen and (min-width: 360px) and (max-width: 414px) {
+      @media only screen and (min-width: 768px) and (max-width: 1365px) {
+        max-width: 100%;
+        border-radius: 2.25rem;
+        height: 60%;
+        gap: calculateRem(30);
+      }
+      @media only screen and (min-width: 360px) and (max-width: 767px) {
         min-width: calculateRem(335);
         width: 90%;
         height: calculateRem(150);
@@ -91,7 +99,11 @@
           width: calculateRem(295.19);
           height: calculateRem(213.76);
         }
-        @media only screen and (min-width: 360px) and (max-width: 414px) {
+        @media only screen and (min-width: 768px) and (max-width: 1365px) {
+          width: 25%;
+          height: auto;
+        }
+        @media only screen and (min-width: 360px) and (max-width: 767px) {
           width: calculateRem(116.95);
           height: calculateRem(84.69);
         }
@@ -101,12 +113,12 @@
         font-size: calculateRem(32);
         font-weight: 400;
         line-height: calculateRem(42.67);
-        @media only screen and (min-width: 1366px) and (max-width: 1919px) {
+        @media only screen and (min-width: 768px) and (max-width: 1919px) {
           width: calculateRem(283);
           font-size: calculateRem(24);
           line-height: calculateRem(32);
         }
-        @media only screen and (min-width: 360px) and (max-width: 414px) {
+        @media only screen and (min-width: 360px) and (max-width: 767px) {
           width: calculateRem(155);
           font-size: calculateRem(16);
           line-height: calculateRem(19.2);
@@ -121,9 +133,12 @@
       justify-content: space-between;
       align-items: center;
       @media only screen and (min-width: 1366px) and (max-width: 1919px) {
-        min-width: calculateRem(1160);
+        max-width: 100%;
       }
-      @media only screen and (min-width: 360px) and (max-width: 414px) {
+      @media only screen and (min-width: 768px) and (max-width: 1365px) {
+        max-width: calculateRem(760);
+      }
+      @media only screen and (min-width: 360px) and (max-width: 767px) {
         min-width: calculateRem(335);
       }
       .prizes_items {
@@ -134,9 +149,19 @@
         margin-bottom: calculateRem(53.33);
         @media only screen and (min-width: 1366px) and (max-width: 1919px) {
           gap: calculateRem(40);
+          max-width: 100%;
           margin-bottom: calculateRem(41);
         }
-        @media only screen and (min-width: 360px) and (max-width: 414px) {
+        @media only screen and (min-width: 1021px) and (max-width: 1365px) {
+          max-width: 100%;
+          max-height: 100%;
+        }
+        @media only screen and (min-width: 768px) and (max-width: 1020px) {
+          gap: calculateRem(20);
+          max-width: 100%;
+          max-height: 100%;
+        }
+        @media only screen and (min-width: 360px) and (max-width: 767px) {
           max-width: 414px;
           width: 100%;
           @include flex_column;
@@ -150,11 +175,19 @@
           position: relative;
           @media only screen and (min-width: 1366px) and (max-width: 1919px) {
             max-width: calculateRem(400);
-            min-width: calculateRem(360);
             width: 100%;
             height: calculateRem(405);
           }
-          @media only screen and (min-width: 360px) and (max-width: 414px) {
+          @media only screen and (min-width: 1021px) and (max-width: 1365px) {
+            max-width: calculateRem(350);
+            min-height: calculateRem(300);
+            height: 100%;
+          }
+          @media only screen and (min-width: 768px) and (max-width: 1020px) {
+            min-height: calculateRem(250);
+            height: 100%;
+          }
+          @media only screen and (min-width: 360px) and (max-width: 767px) {
             max-width: 100%;
             min-width: calculateRem(335);
             width: 90%;
@@ -168,7 +201,13 @@
               height: calculateRem(283);
               width: auto;
             }
-            @media only screen and (min-width: 360px) and (max-width: 414px) {
+            @media only screen and (min-width: 1021px) and (max-width: 1365px) {
+              max-height: calculateRem(220);
+            }
+            @media only screen and (min-width: 768px) and (max-width: 1020px) {
+              height: calculateRem(200);
+            }
+            @media only screen and (min-width: 360px) and (max-width: 767px) {
               height: calculateRem(133);
               width: auto;
               padding-left: calculateRem(24);
@@ -188,10 +227,21 @@
             @media only screen and (min-width: 1366px) and (max-width: 1919px) {
               width: calculateRem(360);
               height: calculateRem(300);
-              font-size: calculateRem(24);
+              border-radius: calculateRem(30);
+            }
+            @media only screen and (min-width: 1021px) and (max-width: 1365px) {
+              max-width: calculateRem(262);
+              max-height: calculateRem(180);
+              font-size: calculateRem(18);
               border-radius: calculateRem(36);
             }
-            @media only screen and (min-width: 360px) and (max-width: 414px) {
+            @media only screen and (min-width: 768px) and (max-width: 1020px) {
+              max-width: calculateRem(238);
+              max-height: calculateRem(140);
+              font-size: calculateRem(18);
+              border-radius: calculateRem(36);
+            }
+            @media only screen and (min-width: 360px) and (max-width: 767px) {
               width: calculateRem(335);
               height: calculateRem(110);
               font-size: calculateRem(16);
@@ -208,7 +258,17 @@
                 font-size: calculateRem(24);
                 border-radius: calculateRem(36);
               }
-              @media only screen and (min-width: 360px) and (max-width: 414px) {
+              @media only screen and (min-width: 1021px) and (max-width: 1365px) {
+                font-size: calculateRem(18);
+                border-radius: calculateRem(20);
+                padding-bottom: calculateRem(20);
+              }
+              @media only screen and (min-width: 768px) and (max-width: 1020px) {
+                font-size: calculateRem(16);
+                border-radius: calculateRem(20);
+                padding-bottom: calculateRem(30);
+              }
+              @media only screen and (min-width: 360px) and (max-width: 767px) {
                 font-size: calculateRem(16);
                 border-radius: calculateRem(20);
                 padding-bottom: calculateRem(0);
@@ -236,7 +296,14 @@
         font-size: calculateRem(24);
         padding: calculateRem(20) 0;
       }
-      @media only screen and (min-width: 360px) and (max-width: 414px) {
+      @media only screen and (min-width: 768px) and (max-width: 1365px) {
+        width: calculateRem(196);
+        height: calculateRem(60);
+        font-size: calculateRem(16);
+        margin-top: calculateRem(10);
+        border-radius: calculateRem(10);
+      }
+      @media only screen and (min-width: 360px) and (max-width: 767px) {
         width: calculateRem(335);
         height: calculateRem(52);
         font-size: calculateRem(20);
@@ -256,7 +323,7 @@
       left: calculateRem(96);
       top: calculateRem(-10);
     }
-    @media only screen and (min-width: 360px) and (max-width: 414px) {
+    @media only screen and (min-width: 360px) and (max-width: 1365px) {
       display: none;
     }
   }
@@ -270,7 +337,7 @@
       right: calculateRem(0);
       top: calculateRem(390);
     }
-    @media only screen and (min-width: 360px) and (max-width: 414px) {
+    @media only screen and (min-width: 360px) and (max-width: 1365px) {
       display: none;
     }
   }

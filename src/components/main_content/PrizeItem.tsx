@@ -1,4 +1,5 @@
 import { ItemsType } from './itemsData';
+
 import '../../assets/styles/promoContentStyles.scss';
 
 export function PrizeItem({ data }: { data: ItemsType[] }) {

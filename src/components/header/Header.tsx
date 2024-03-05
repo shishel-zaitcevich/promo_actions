@@ -1,21 +1,34 @@
-import { useEffect } from 'react';
-import '../../assets/styles/header.scss';
+import { useEffect, useState } from 'react';
+
 import { HeaderContent } from './HeaderContent';
 import { HeaderTop } from './HeaderTop';
 
+import '../../assets/styles/header.scss';
+
 export function Header() {
+  const [windowSize, setWindowSize] = useState({
+    width: document.documentElement.clientWidth,
+    height: document.documentElement.clientHeight,
+  });
+
   useEffect(() => {
-    document.documentElement.style.setProperty(
-      '--window-inner-width',
-      `${window.innerWidth}px`
-    );
-    document.documentElement.style.setProperty(
-      '--window-inner-height',
-      `${window.innerHeight}px`
-    );
+    const handleResize = () => {
+      setWindowSize({
+        width: document.documentElement.clientWidth,
+        height: document.documentElement.clientHeight,
+      });
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
+
   return (
-    <header className={`header `}>
+    <header
+      className={`header `}
+      style={{ width: windowSize.width, height: windowSize.height }}
+    >
       <div className="container header_container">
         <HeaderTop />
         <HeaderContent />

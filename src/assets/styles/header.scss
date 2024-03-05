@@ -6,11 +6,7 @@
 }
 
 .header {
-  // width: 100vw;
-  width: var(--window-inner-width);
-  height: var(--window-inner-height);
   background-color: $color_green;
-  // height: 100vh;
   position: relative;
   .header_top {
     max-width: calculateRem(1546);
@@ -23,7 +19,13 @@
     @media only screen and (min-width: 1366px) and (max-width: 1919px) {
       max-width: calculateRem(1159.52);
     }
-    @media only screen and (min-width: 360px) and (max-width: 414px) {
+    @media only screen and (min-width: 768px) and (max-width: 1365px) {
+      max-width: 100%;
+      height: calculateRem(63);
+      padding: 0 calculateRem(10);
+      justify-content: center;
+    }
+    @media only screen and (min-width: 360px) and (max-width: 767px) {
       max-width: 90%;
       height: calculateRem(63);
     }
@@ -33,7 +35,7 @@
     @media only screen and (min-width: 1366px) and (max-width: 1919px) {
       width: calculateRem(136.29);
     }
-    @media only screen and (min-width: 360px) and (max-width: 414px) {
+    @media only screen and (min-width: 360px) and (max-width: 768px) {
       width: calculateRem(100);
     }
   }
@@ -48,15 +50,24 @@
     @media only screen and (min-width: 1366px) and (max-width: 1919px) {
       width: calculateRem(879);
       margin-left: calculateRem(144.63);
-      @media only screen and (min-width: 360px) and (max-width: 414px) {
-      }
     }
+    @media only screen and (min-width: 768px) and (max-width: 1365px) {
+      width: calculateRem(700);
+      margin-left: calculateRem(30);
+    }
+    @media only screen and (min-width: 360px) and (max-width: 767px) {
+      display: none;
+    }
+
     .link {
       color: $color_black;
       font-size: calculateRem(24);
       cursor: pointer;
       @media only screen and (min-width: 1366px) and (max-width: 1919px) {
         font-size: calculateRem(18);
+      }
+      @media only screen and (min-width: 768px) and (max-width: 1365px) {
+        font-size: calculateRem(12);
       }
     }
     .button {
@@ -74,19 +85,20 @@
         height: calculateRem(48);
         font-size: calculateRem(18);
       }
+      @media only screen and (min-width: 768px) and (max-width: 1365px) {
+        width: calculateRem(168);
+        height: calculateRem(40);
+        font-size: calculateRem(12);
+      }
     }
   }
 }
 .header_container {
   display: flex;
   @include flex_column;
-  width: 100vw;
-  height: 100vh;
   .header_content {
     max-width: calculateRem(1920);
-    min-width: calculateRem(1366);
     width: 100%;
-    height: calc(100vh - 129.33px);
     display: flex;
     flex: 1 1 auto;
     align-items: flex-end;
@@ -96,10 +108,11 @@
     @media only screen and (min-width: 1366px) and (max-width: 1919px) {
       width: 100%;
     }
-    @media only screen and (min-width: 360px) and (max-width: 414px) {
+    @media only screen and (min-width: 768px) and (max-width: 1365px) {
+    }
+    @media only screen and (min-width: 360px) and (max-width: 767px) {
       max-width: calculateRem(414);
       min-width: calculateRem(360);
-      min-height: calc(100vh - 63px);
       flex-direction: column-reverse;
       align-items: center;
       justify-content: space-between;
@@ -107,10 +120,8 @@
     }
     .bottle_img {
       max-width: calculateRem(996);
-      min-width: calculateRem(747);
       width: 100%;
       max-height: calculateRem(950.67);
-      min-height: calculateRem(638.67);
       height: 100%;
       position: absolute;
       z-index: 2;
@@ -119,20 +130,24 @@
       background-image: url('../../../public/images/bottle.png');
       background-repeat: no-repeat;
       background-size: contain;
-      background-position: bottom;
-      @media only screen and (min-width: 1366px) and (max-width: 1919px) {
-        height: calc(100vh - 129.33px);
-        max-width: 52%;
-      }
+      background-position: bottom left;
+
       @media only screen and (min-width: 1366px) and (max-width: 1439px) {
-        height: calc(100vh - 129.33px);
-        min-width: 46%;
+        max-height: calculateRem(760);
         max-width: 50%;
       }
-      @media only screen and (min-width: 360px) and (max-width: 414px) {
+      @media only screen and (min-width: 1021px) and (max-width: 1365px) {
+        max-height: 85%;
+        max-width: 100%;
+      }
+      @media only screen and (min-width: 767px) and (max-width: 1020px) {
+        max-height: calculateRem(500);
+        max-width: 80%;
+        left: -10%;
+      }
+      @media only screen and (min-width: 360px) and (max-width: 767px) {
         min-width: calculateRem(240);
         max-width: 90%;
-        min-height: calculateRem(100);
         max-height: 100%;
         height: 45%;
         position: relative;
@@ -142,9 +157,8 @@
     }
     .title_container {
       max-width: calculateRem(602.67);
-      min-width: calculateRem(452);
       width: 100%;
-      min-height: calculateRem(638.67);
+      max-height: calculateRem(937.33);
       height: 100%;
       bottom: 0;
       position: absolute;
@@ -156,10 +170,12 @@
       @media only screen and (min-width: 1366px) and (max-width: 1919px) {
         max-width: 40%;
       }
-      @media only screen and (min-width: 360px) and (max-width: 414px) {
+      @media only screen and (min-width: 768px) and (max-width: 1365px) {
+        max-width: 40%;
+        max-height: 100%;
+      }
+      @media only screen and (min-width: 360px) and (max-width: 767px) {
         max-width: 100%;
-        min-width: calculateRem(262);
-        min-height: calculateRem(150);
         height: 33%;
         justify-content: center;
         position: relative;
@@ -185,9 +201,18 @@
           font-size: calculateRem(70);
           max-width: 80%;
         }
-        @media only screen and (min-width: 390px) and (max-width: 414px) {
+        @media only screen and (min-width: 1021px) and (max-width: 1365px) {
+          font-size: calculateRem(40);
+          max-width: 70%;
+          padding-top: 20%;
+        }
+        @media only screen and (min-width: 768px) and (max-width: 1020px) {
+          font-size: calculateRem(40);
+          max-width: 100%;
+        }
+        @media only screen and (min-width: 390px) and (max-width: 767px) {
           font-size: calculateRem(28);
-          padding-top: calculateRem(0);
+          padding-top: calculateRem(020);
           max-width: 73%;
         }
         @media only screen and (min-width: 360px) and (max-width: 389px) {
@@ -213,7 +238,12 @@
           height: calculateRem(80);
           font-size: calculateRem(30);
         }
-        @media only screen and (min-width: 360px) and (max-width: 414px) {
+        @media only screen and (min-width: 768px) and (max-width: 1365px) {
+          width: calculateRem(250);
+          height: calculateRem(70);
+          font-size: calculateRem(25);
+        }
+        @media only screen and (min-width: 360px) and (max-width: 767px) {
           font-size: calculateRem(20);
           max-width: calculateRem(335);
           max-height: calculateRem(52);
@@ -222,96 +252,98 @@
       }
     }
     .prizes_imgs {
-      position: relative;
-      left: 60%;
+      position: absolute;
+      right: 0;
       max-width: calculateRem(762);
-      min-width: calculateRem(571.5);
       width: 100%;
       max-height: calculateRem(950);
-      min-height: calculateRem(638.67);
       height: 100%;
       z-index: 1;
       @include flex_column;
       justify-content: space-between;
       @media only screen and (min-width: 1366px) and (max-width: 1919px) {
-        height: calc(100vh - 129.33px);
-        max-width: 30%;
       }
-      @media only screen and (min-width: 360px) and (max-width: 414px) {
-        max-width: calculateRem(335);
-        min-width: calculateRem(100);
-        max-height: 14.34125rem;
-        min-height: 6.25rem;
-        height: 100%;
+      @media only screen and (min-width: 768px) and (max-width: 1365px) {
+        right: 0;
+      }
+      @media only screen and (min-width: 360px) and (max-width: 767px) {
         position: relative;
-        left: 0;
+        max-height: calculateRem(229.46);
+        gap: calculateRem(20);
       }
       .card {
-        margin-left: calculateRem(160);
+        position: absolute;
+        right: calculateRem(21.33);
         max-width: calculateRem(602);
-        min-width: calculateRem(286);
         width: 100%;
-        height: calculateRem(336.56);
+        max-height: calculateRem(336.56);
+        height: 100%;
         background-image: url('../../../public/images/card.png');
         background-repeat: no-repeat;
         background-size: contain;
         @media only screen and (min-width: 1600px) and (max-width: 1919px) {
-          max-width: 90%;
-          margin-left: calculateRem(180.8);
+          max-width: calculateRem(520);
+          right: calculateRem(16);
         }
         @media only screen and (min-width: 1440px) and (max-width: 1599px) {
-          max-width: 80%;
-          margin-left: calculateRem(100);
+          max-width: calculateRem(451);
+          right: 2%;
         }
-        @media only screen and (min-width: 1366px) and (max-width: 1439px) {
-          max-width: 75%;
-          margin-left: calculateRem(100);
+        @media only screen and (min-width: 1368px) and (max-width: 1439px) {
+          max-width: 55%;
         }
 
-        max-width: 72%;
-        @media only screen and (min-width: 360px) and (max-width: 414px) {
+        @media only screen and (min-width: 1021px) and (max-width: 1365px) {
+          max-width: 50%;
+          top: 10%;
+          max-height: calculateRem(500);
+        }
+        @media only screen and (min-width: 768px) and (max-width: 1020px) {
+          max-height: calculateRem(300);
+          max-width: calculateRem(240);
+          right: 0;
+        }
+        @media only screen and (min-width: 360px) and (max-width: 767px) {
           display: none;
         }
       }
       .super {
-        margin-bottom: calculateRem(84);
-        min-width: calculateRem(464);
-        max-width: calculateRem(824);
+        position: absolute;
+        bottom: calculateRem(84);
         width: 100%;
-        height: calculateRem(550);
+        max-height: calculateRem(550);
+        height: 100%;
         background-image: url('../../../public/images/super.png');
         background-repeat: no-repeat;
         background-size: contain;
         @media only screen and (min-width: 1600px) and (max-width: 1919px) {
-          min-width: 115%;
-          margin-left: calculateRem(112);
+          max-height: calculateRem(480);
+          bottom: 3%;
+          background-position: right bottom;
         }
-        @media only screen and (min-width: 1440px) and (max-width: 1599px) {
-          min-width: 100%;
-          min-height: calculateRem(413);
-          margin-left: calculateRem(0);
-          margin-bottom: calculateRem(63);
-          background-size: 100%;
+        @media only screen and (min-width: 1366px) and (max-width: 1599px) {
+          max-height: calculateRem(413);
+          bottom: 3%;
+          max-width: calculateRem(570);
+          right: 0;
         }
-        @media only screen and (min-width: 1366px) and (max-width: 1439px) {
-          min-width: 80%;
-          max-width: 90%;
-          margin-bottom: calculateRem(40);
-          position: absolute;
-          bottom: 0px;
-          background-position: bottom;
+        @media only screen and (min-width: 1021px) and (max-width: 1365px) {
+          max-height: calculateRem(400);
+          max-width: calculateRem(600);
+          right: 0;
+          bottom: 5%;
+          background-position: bottom right;
         }
-        @media only screen and (min-width: 360px) and (max-width: 414px) {
-          max-width: calculateRem(342);
-          min-width: calculateRem(342);
-
-          max-height: calculateRem(229.46);
-          min-height: calculateRem(100);
-          height: 100%;
+        @media only screen and (min-width: 768px) and (max-width: 1020px) {
+          max-height: calculateRem(300);
+          max-width: calculateRem(320);
+          right: 0;
+          bottom: 0;
+        }
+        @media only screen and (min-width: 360px) and (max-width: 767px) {
           background-image: url('../../../public/images/Group\ 1987300019.png');
-          background-size: 94%;
           background-position: top;
-          margin: 0;
+          position: unset;
         }
       }
     }

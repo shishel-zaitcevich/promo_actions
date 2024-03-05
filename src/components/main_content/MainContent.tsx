@@ -1,16 +1,34 @@
+import { useEffect, useState } from 'react';
+
+import { Container } from '@mui/material';
+
 import { PrizeItem } from './PrizeItem';
 import { itemsData } from './itemsData';
-import '../../assets/styles/promoContentStyles.scss';
-import { Container } from '@mui/material';
 import { SignUpForm } from '../forms/SignUpForm';
 import CloseButton from '../utils/CloseButton';
 import ModalWindow from '../utils/modalWindow/modalWindow';
-import { useState } from 'react';
 import { SuccessMessage } from '../utils/SuccessMessage';
+
+import '../../assets/styles/promoContentStyles.scss';
 
 export function MainContent() {
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+  const [windowSize, setWindowSize] = useState({
+    width: document.documentElement.clientWidth,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        width: document.documentElement.clientWidth,
+      });
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   const handleCloseSuccessModal = () => {
     setIsSuccessModalOpen(false);
   };
@@ -27,7 +45,11 @@ export function MainContent() {
     setIsFormModalOpen(false);
   };
   return (
-    <div className="main_wrapper" id="prizes">
+    <div
+      className="main_wrapper"
+      id="prizes"
+      style={{ width: windowSize.width }}
+    >
       <img src="images/green_curl.svg" alt="curl" className="curl" />
       <img src="images/lemon.png" alt="lemon" className="lemon" />
       <main className="container">

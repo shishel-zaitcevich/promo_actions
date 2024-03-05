@@ -27,9 +27,18 @@
 //   font-weight: 400;
 // }
 
+// @font-face {
+//   font-family: 'Circe';
+//   src: url('../fonts/CRC55.woff') format('woff');
+//   font-style: normal;
+//   font-weight: 400;
+// }
+
 @font-face {
   font-family: 'Circe';
-  src: url('../fonts/CRC55.woff') format('woff');
   font-style: normal;
-  font-weight: 400;
+  font-weight: normal;
+  src:
+    url('../fonts/CRC35.woff') format('woff'),
+    url('../fonts/CRC35.otf') format('otf');
 }

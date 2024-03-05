@@ -1,9 +1,11 @@
-import { NavLink } from 'react-router-dom';
-import { SideBar } from './SideBarMenu';
-import ModalWindow from '../utils/modalWindow/modalWindow';
-import { Button, Container } from '@mui/material';
-import { Link } from 'react-scroll';
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+
+import { SideBar } from './SideBarMenu';
+import { Link } from 'react-scroll';
+import { Container } from '@mui/material';
+
+import ModalWindow from '../utils/modalWindow/modalWindow';
 import { SignUpForm } from '../forms/SignUpForm';
 import CloseButton from '../utils/CloseButton';
 import { SuccessMessage } from '../utils/SuccessMessage';
@@ -26,8 +28,9 @@ export function Navigation() {
   const handleCloseModal = () => {
     setIsFormModalOpen(false);
   };
-  if (window.innerWidth >= 1366) {
-    return (
+
+  return (
+    <>
       <nav className="nav">
         <NavLink className={`link `} to="/">
           ГЛАВНАЯ
@@ -58,15 +61,12 @@ export function Navigation() {
           <SuccessMessage handleCloseModal={handleCloseSuccessModal} />
         </ModalWindow>
       </nav>
-    );
-  } else {
-    return (
       <SideBar
         isOpen={false}
         right={true}
         pageWrapId={'page-wrap'}
         outerContainerId={'App'}
       />
-    );
-  }
+    </>
+  );
 }

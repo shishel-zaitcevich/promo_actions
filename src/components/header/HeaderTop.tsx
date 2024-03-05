@@ -1,5 +1,6 @@
-import '../../assets/styles/mainStyles.scss';
 import { Navigation } from './Navigation';
+
+import '../../assets/styles/mainStyles.scss';
 
 export function HeaderTop() {
   return (

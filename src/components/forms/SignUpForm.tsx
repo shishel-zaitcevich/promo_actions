@@ -1,12 +1,16 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
+
 import { useForm, Controller } from 'react-hook-form';
+
 import TextField from '@mui/material/TextField';
-import { FormHelperText, InputAdornment, InputLabel } from '@mui/material';
+import { FormHelperText, InputLabel } from '@mui/material';
 import { Grid } from '@mui/material';
-import '../../assets/styles/signUpForm.scss';
 
 import { formSubmit } from '../utils/formSubmit';
 import Checkbox from '../utils/CheckBox';
+import { useFormData } from '../context/formContext';
+
+import '../../assets/styles/signUpForm.scss';
 
 export interface FormDataType {
   name: string;
@@ -29,6 +33,7 @@ interface FormProps {
 export const SignUpForm: React.FC<FormProps> = ({ onFormSubmitAction }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [backendErrors, setBackendErrors] = useState<backendErrorsType>({});
+  const { setFormData } = useFormData();
 
   const {
     control,
@@ -68,7 +73,6 @@ export const SignUpForm: React.FC<FormProps> = ({ onFormSubmitAction }) => {
   };
 
   const handleFormSubmit = async (formData: FormDataType) => {
-    console.log('handleFormSubmit', formData.rules1);
     if (onFormSubmitAction) {
       const data = {
         ...formData,
@@ -78,19 +82,17 @@ export const SignUpForm: React.FC<FormProps> = ({ onFormSubmitAction }) => {
             : formData.rules1,
       };
 
-      console.log('data', data);
-
+      setFormData(data);
       formSubmit(data, resetForm, onFormSubmitAction);
       const response: backendErrorsType | undefined = await formSubmit(
         data,
         resetForm,
+
         onFormSubmitAction
       );
       if (response) {
         setBackendErrors(response);
       }
-      console.log('Form submitted');
-      console.log('isChecked', formData.rules1); // Здесь получите значение из поля rules1
     }
   };
 
@@ -129,8 +131,6 @@ export const SignUpForm: React.FC<FormProps> = ({ onFormSubmitAction }) => {
                 >
                   {errors.name?.message ||
                     (isFocused ? '' : backendErrors.name?.join(', '))}
-                  {/* {errors.name?.message}
-                  {backendErrors.name?.join(', ')} */}
                 </FormHelperText>
               </>
             )}
@@ -224,7 +224,6 @@ export const SignUpForm: React.FC<FormProps> = ({ onFormSubmitAction }) => {
                 <Checkbox
                   checked={field.value}
                   {...field}
-                  id="rules1"
                   {...register('rules1', {
                     required: 'Необходимо принять условия.',
                   })}

@@ -1,20 +1,23 @@
 import React from 'react';
-import './App.css';
 import { Route, Routes } from 'react-router-dom';
+
 import { PromoPage } from './components/PromoPage';
+import { FormDataProvider } from './components/context/formContext';
 
 export function App() {
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <>
-            <PromoPage />
-          </>
-        }
-      ></Route>
-    </Routes>
+    <FormDataProvider>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <PromoPage />
+            </>
+          }
+        ></Route>
+      </Routes>
+    </FormDataProvider>
   );
 }
 

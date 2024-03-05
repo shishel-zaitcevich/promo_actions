@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Modal } from '@mui/material';
 
 interface CustomModalProps {
@@ -14,23 +15,7 @@ const ModalWindow: React.FC<CustomModalProps> = ({
 }) => {
   return (
     <Modal open={isOpen} onClose={onClose}>
-      <div
-        className="modal"
-        // style={{
-        //   position: 'absolute',
-        //   top: '50%',
-        //   left: '50%',
-        //   transform: 'translate(-50%, -50%)',
-        //   width: 400,
-        //   backgroundColor: 'background.paper',
-        //   boxShadow: '24',
-        //   // p: 4,
-        //   borderRadius: '8px',
-        //   border: 'none',
-        // }}
-      >
-        {children}
-      </div>
+      <div className="modal">{children}</div>
     </Modal>
   );
 };

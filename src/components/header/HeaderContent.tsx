@@ -1,8 +1,11 @@
+import { useState } from 'react';
+
 import { Container } from '@mui/material';
+
 import ModalWindow from '../utils/modalWindow/modalWindow';
 import CloseButton from '../utils/CloseButton';
+import { SuccessMessage } from '../utils/SuccessMessage';
 import { SignUpForm } from '../forms/SignUpForm';
-import { useState } from 'react';
 
 export function HeaderContent() {
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
@@ -36,6 +39,12 @@ export function HeaderContent() {
             <CloseButton onClick={handleCloseModal} />
             <SignUpForm onFormSubmitAction={onFormSubmitAction} />
           </Container>
+        </ModalWindow>
+        <ModalWindow
+          isOpen={isSuccessModalOpen}
+          onClose={handleCloseSuccessModal}
+        >
+          <SuccessMessage handleCloseModal={handleCloseSuccessModal} />
         </ModalWindow>
       </div>
       <div className="prizes_imgs">

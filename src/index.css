@@ -6,10 +6,8 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-
 html {
-  /* width: 100vw; */
-  width: var(--window-inner-width);
+  width: 100vw;
   height: 100vh;
 }
 

@@ -1,9 +1,27 @@
+import { useState, useEffect } from 'react';
+
 import { NavLink } from 'react-router-dom';
+
 import '../../assets/styles/footer.scss';
 
 export function Footer() {
+  const [windowSize, setWindowSize] = useState({
+    width: document.documentElement.clientWidth,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        width: document.documentElement.clientWidth,
+      });
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   return (
-    <footer className="footer">
+    <footer className="footer" style={{ width: windowSize.width }}>
       <nav className="footer_nav">
         <NavLink className={`footer_link `} to="/">
           ГЛАВНАЯ
