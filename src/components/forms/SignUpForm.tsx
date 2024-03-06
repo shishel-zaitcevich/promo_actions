@@ -74,18 +74,18 @@ export const SignUpForm: React.FC<FormProps> = ({ onFormSubmitAction }) => {
 
   const handleFormSubmit = async (formData: FormDataType) => {
     if (onFormSubmitAction) {
-      const data = {
-        ...formData,
-        rules1:
-          typeof formData.rules1 === 'string'
-            ? JSON.parse(formData.rules1)
-            : formData.rules1,
-      };
+      // const data = {
+      //   ...formData,
+      //   rules1:
+      //     typeof formData.rules1 === 'string'
+      //       ? JSON.parse(formData.rules1)
+      //       : formData.rules1,
+      // };
 
-      setFormData(data);
-      formSubmit(data, resetForm, onFormSubmitAction);
+      setFormData(formData);
+      formSubmit(formData, resetForm, onFormSubmitAction);
       const response: backendErrorsType | undefined = await formSubmit(
-        data,
+        formData,
         resetForm,
 
         onFormSubmitAction
