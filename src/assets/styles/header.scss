@@ -212,12 +212,12 @@
         }
         @media only screen and (min-width: 390px) and (max-width: 767px) {
           font-size: calculateRem(28);
-          padding-top: calculateRem(020);
+          padding-top: calculateRem(20);
           max-width: 73%;
         }
         @media only screen and (min-width: 360px) and (max-width: 389px) {
           font-size: calculateRem(28);
-          padding-top: calculateRem(0);
+          padding-top: calculateRem(10);
           max-width: 80%;
           line-height: calculateRem(30.8);
         }
