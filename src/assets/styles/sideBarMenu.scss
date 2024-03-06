@@ -18,9 +18,13 @@
 }
 
 .bm-menu {
-  background: #fff;
+  background: $color_white;
   padding: calculateRem(70) calculateRem(20) 0;
   font-size: 1.15em;
+}
+
+.bm-burger-button-color-green {
+  background: $color_green !important;
 }
 
 .bm-burger-button {

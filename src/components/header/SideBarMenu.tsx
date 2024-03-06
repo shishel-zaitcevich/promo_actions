@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { slide as Menu, Props } from 'react-burger-menu';
@@ -22,6 +22,41 @@ export function SideBar(
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isHeaderVisible, setIsHeaderVisible] = useState<boolean>(true);
+
+  const sideBarBtn: NodeListOf<Element> =
+    document.querySelectorAll('.bm-burger-bars');
+  if (sideBarBtn) {
+    if (!isHeaderVisible) {
+      sideBarBtn.forEach((element) => {
+        element.classList.add('bm-burger-button-color-green');
+      });
+    } else {
+      sideBarBtn.forEach((element) => {
+        element.classList.remove('bm-burger-button-color-green');
+      });
+    }
+  }
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const headerHeight = document.getElementById('header')?.offsetHeight ?? 0;
+      const windowHeight = window.innerHeight;
+      const threshold = headerHeight + windowHeight;
+      const scrollTop = window.scrollY;
+      if (scrollTop > threshold) {
+        setIsHeaderVisible(false);
+      } else {
+        setIsHeaderVisible(true);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const handleIsOpen = () => {
     setIsOpen(!isOpen);
@@ -58,7 +93,6 @@ export function SideBar(
       isOpen={isOpen}
       onOpen={handleIsOpen}
       onClose={handleIsOpen}
-      className="sideBar_menu"
     >
       <img src="images/palm.png" alt="img" className="sidebar_img" />
       <NavLink to="/" onClick={closeSideBar}>
