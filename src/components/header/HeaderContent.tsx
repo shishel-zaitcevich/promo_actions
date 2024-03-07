@@ -47,10 +47,8 @@ export function HeaderContent() {
           <SuccessMessage handleCloseModal={handleCloseSuccessModal} />
         </ModalWindow>
       </div>
-      <div className="prizes_imgs">
-        <div className="card"></div>
-        <div className="super"></div>
-      </div>
+      <div  className="card"></div>
+      <div  className="super"></div>
     </section>
   );
 }
